@@ -56,11 +56,18 @@ class GameController extends Controller
             return $this->error("数据不存在");
         }
 
+        // 加载具体游戏sku信息
         $data["subjects"] = $data->getSubject($data->officialGameIds);
 
+        // 处理图片地址转换
         $data->loadCoverUrl()->loadThumbUrl();
         $intro_data = json_decode($data->intro, true);
+        // 尽量显示中文
         $data->intro = $intro_data["hk"] ?? $intro_data["trans"] ?? "";
+        $data->intro = str_replace("<br>", PHP_EOL, $data->intro);
+
+        // 总体评分美化
+        $data->score = number_format($data->score, 1);
 
         return $this->infoJson($data);
     }

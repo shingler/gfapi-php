@@ -131,6 +131,9 @@ class Manager
      * @return 图片url
      */
     public function getOriginUrl($key, $bucket_name):string {
+        if (strpos($key, "http") !== false) {
+            return $key;
+        }
         return sprintf("//%s/%s", $this->getDomain($bucket_name), $key);
     }
 

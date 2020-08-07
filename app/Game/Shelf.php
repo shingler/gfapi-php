@@ -37,7 +37,10 @@ class Shelf extends Model
     public function loadCoverUrl() {
         $this->attributes["mp_cover"] = [];
         $this->attributes["mp_cover_detail"] = [];
-        if ($covers = json_decode($this->original["cover"], true)) {
+        // json串的单引号问题兼容
+        $this->cover = str_replace("'", "\"", $this->cover);
+
+        if ($covers = json_decode($this->cover, true)) {
             foreach ($covers as $c) {
                 $this->attributes["mp_cover"][] = $this->ossManager->getUrl($c, "cover", "mp_list_icon_w60h60");
                 $this->attributes["mp_cover_detail"][] = $this->ossManager->getUrl($c, "cover", "mp_detail_pic_w414");
@@ -49,7 +52,10 @@ class Shelf extends Model
 
     public function loadThumbUrl() {
         $this->attributes["mp_thumb"] = [];
-        if ($thumbs = json_decode($this->original["thumb"], true)) {
+        // json串的单引号问题兼容
+        $this->thumb = str_replace("'", "\"", $this->thumb);
+
+        if ($thumbs = json_decode($this->thumb, true)) {
             foreach ($thumbs as $t) {
                 $this->attributes["mp_thumb"][] = $this->ossManager->getUrl($t, "thumb", "mp_detail_pic_w414h240");
             }
