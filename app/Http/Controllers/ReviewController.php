@@ -38,7 +38,10 @@ class ReviewController extends Controller
         if (empty($review_data)) {
             return $this->error("该评测不存在");
         }
+        // 处理评测的游戏主体封图
         $review_data->shelf->loadCoverUrl()->toArray();
+        // 评测内容译文做按句换行
+        $review_data->comment_trans = str_replace("。", "。".PHP_EOL, $review_data->comment_trans);
         return $this->infoJson($review_data);
     }
 }
