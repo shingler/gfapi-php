@@ -15,14 +15,14 @@ class Serial extends Model
     }
 
     public function getRelatedGames(array $except=[]) {
-        $where = [
-            ['show', '=', 1],
-            ['serial_id', '=', $this->id]
-        ];
         $shelf_model = Shelf::where('show', '=', 1)->where('serial_id', '=', $this->id);
         if (count($except) > 0) {
             $shelf_model->whereNotIn('gameId', $except);
         }
-        return $shelf_model->orderBy('gameId', 'desc')->get();
+        $shelf_list = $shelf_model->orderBy('gameId', 'desc')->get();
+        foreach ($shelf_list as $k => $item) {
+            $shelf_list[$k]->loadCoverUrl();
+        }
+        return $shelf_list;
     }
 }
