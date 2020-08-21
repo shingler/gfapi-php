@@ -22,8 +22,8 @@ class DoUnitTest extends TestCase
      */
     public function testFavoriteDo()
     {
-        $token = "d6806ff77ed86c88c622042cec0fae6f";
-        $game_id = 31;
+        $token = "0adce167543e66844d0d7d695826c2fd";
+        $game_id = 32;
 
         $response = $this->json("post", route("favorite.add", compact("game_id")), compact("token"));
         $response->assertStatus(200);

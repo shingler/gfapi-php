@@ -36,11 +36,13 @@ Route::post('/connect/authenticate', 'ConnectController@authenticate');
 Route::get('/connect/token', 'ConnectController@token');
 // 用户操作
 Route::prefix('user')->middleware('token')->group(function (){
-    Route::get('get', 'UserController@get');
+    Route::get('get', 'UserController@get')->name("user.get");
+    Route::post('changename', 'UserController@changename')->name("user.changename");
 });
 // 收藏相关
 Route::prefix('favorite')->middleware('token')->group(function (){
-    Route::get('my', 'FavoriteController@my');
+    Route::get('my', 'FavoriteController@my')->name("favorite.list");
+    Route::get('check/{game_id}', 'FavoriteController@check')->name("favorite.check")->middleware("gameId");
     Route::post('do/{game_id}', 'FavoriteController@do')->name("favorite.add")->middleware("gameId");
     Route::post('undo/{game_id}', 'FavoriteController@undo')->name("favorite.remove")->middleware("gameId");
 });

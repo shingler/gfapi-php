@@ -12,12 +12,39 @@ class FavoriteController extends Controller
 {
     use JsonResponse;
 
+    /**
+     * 我的收藏列表
+     * @param Request $request
+     * @return \App\Http\Response\Json格式的输出
+     */
     public function my(Request $request) {
         $user_id = $request->session()->get("user_id");
-        $list = Favorite::with("shelf")->where('user_id', $user_id)->where('state', 1)->get();
+        $list = Favorite::with("shelf")->where('user_id', $user_id)->where('state', 1)->orderByDesc('updated')->get();
+        foreach ($list as $k => $item) {
+            $list[$k]["shelf"] = $list[$k]["shelf"]->loadCoverUrl();
+        }
         return $this->listJson($list);
     }
 
+    /**
+     * 检查用户是否收藏过某游戏
+     * @param Request $request
+     * @param int $game_id
+     * @return JsonResponse
+     */
+    public function check(Request $request, int $game_id) {
+        $user_id = $request->session()->get("user_id");
+        $res = Favorite::where("user_id", $user_id)->where("shelf_id", $game_id)->first();
+        $state = $res?$res->state:0;
+        return $this->success("ok", ["state"=>$state]);
+    }
+
+    /**
+     * 执行收藏
+     * @param Request $request
+     * @param int $game_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function do(Request $request, int $game_id) {
         $user_id = $request->session()->get("user_id");
 
@@ -25,10 +52,12 @@ class FavoriteController extends Controller
         if ($fav_obj and $fav_obj->state == 1) {
             return $this->error("已经收藏过了");
         }
+        $res = [];
         if ($fav_obj) {
             $fav_obj->state = 1;
             $fav_obj->updated = now()->getTimestamp();
             $fav_obj->save();
+            $res["state"] = $fav_obj->state;
         } else {
             $data = [
                 "user_id" => $user_id,
@@ -38,10 +67,17 @@ class FavoriteController extends Controller
                 "updated" => now()->getTimestamp()
             ];
             Favorite::create($data);
+            $res["state"] = 1;
         }
-        return $this->success("收藏成功", $data);
+        return $this->success("收藏成功", $res);
     }
 
+    /**
+     * 取消收藏
+     * @param Request $request
+     * @param int $game_id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function undo(Request $request, int $game_id) {
         $user_id = $request->session()->get("user_id");
 

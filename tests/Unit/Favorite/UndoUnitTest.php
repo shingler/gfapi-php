@@ -21,7 +21,7 @@ class UndoUnitTest extends TestCase
      */
     public function testFavoriteUndo()
     {
-        $token = "d6806ff77ed86c88c622042cec0fae6f";
+        $token = "0adce167543e66844d0d7d695826c2fd";
         $game_id = 31;
 
         $response = $this->json("post", route("favorite.remove", compact("game_id")), compact("token"));
