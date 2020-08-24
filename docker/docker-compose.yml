@@ -2,7 +2,7 @@ version: "2"
 services:
   laravel:
 #    image: shingler/php7_laravel_nginx:v2
-    image: laravel_dev:1.7
+    image: laravel_dev:1.8
     restart: always
     depends_on:
       - mysql

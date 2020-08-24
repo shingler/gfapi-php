@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Response\JsonResponse;
 use App\Auth\{Token, User, Userprofile};
+use App\Aliyunoss\Manager;
 
 class UserController extends Controller
 {
@@ -49,5 +50,11 @@ class UserController extends Controller
         $user_info_obj->save();
 
         return $this->success("修改成功");
+    }
+
+    public function avatar_sign(Request $request) {
+        $ossManager = new Manager();
+        $sign = $ossManager->getDirectUploadSign("avatar", "avatar");
+        return $this->success("ok", $sign);
     }
 }

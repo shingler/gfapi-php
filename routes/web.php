@@ -38,6 +38,7 @@ Route::get('/connect/token', 'ConnectController@token');
 Route::prefix('user')->middleware('token')->group(function (){
     Route::get('get', 'UserController@get')->name("user.get");
     Route::post('changename', 'UserController@changename')->name("user.changename");
+    Route::get('avatar_sign', 'UserController@avatar_sign')->name("user.avatar_sign");
 });
 // 收藏相关
 Route::prefix('favorite')->middleware('token')->group(function (){

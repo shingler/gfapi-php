@@ -1,6 +1,9 @@
 FROM shingler/php7_laravel_nginx:v2
 MAINTAINER singlerwong@qq.com
-RUN apt-get install -y vim
+# 安装vim，设置时区
+RUN apt-get install -y vim \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo 'Asia/Shanghai' >/etc/timezone
 VOLUME /var/www
 WORKDIR /var/www
 COPY gfapi.conf /etc/nginx/conf.d
