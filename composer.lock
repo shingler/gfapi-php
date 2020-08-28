@@ -4,8 +4,244 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f8a8b4083c7ee4b78cd6d597bb8954b",
+    "content-hash": "f1bfd913be7fa10adf8a3c00fe7008b3",
     "packages": [
+        {
+            "name": "adbario/php-dot-notation",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/adbario/php-dot-notation.git",
+                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/adbario/php-dot-notation/zipball/eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+                "reference": "eee4fc81296531e6aafba4c2bbccfc5adab1676e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0|^5.0|^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Adbar\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Riku Särkinen",
+                    "email": "riku@adbar.io"
+                }
+            ],
+            "description": "PHP dot notation access to arrays",
+            "homepage": "https://github.com/adbario/php-dot-notation",
+            "keywords": [
+                "ArrayAccess",
+                "dotnotation"
+            ],
+            "time": "2019-01-01T23:59:15+00:00"
+        },
+        {
+            "name": "alibabacloud/tea",
+            "version": "3.1.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aliyun/tea-php.git",
+                "reference": "5fa94ef970cf6bc5d54ee3ef81fb66aa5eb144be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aliyun/tea-php/zipball/5fa94ef970cf6bc5d54ee3ef81fb66aa5eb144be",
+                "reference": "5fa94ef970cf6bc5d54ee3ef81fb66aa5eb144be",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "adbario/php-dot-notation": "^2.2",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
+                "ext-xmlwriter": "*",
+                "guzzlehttp/guzzle": "^6.3",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.4.3",
+                "symfony/dotenv": "^3.4",
+                "symfony/var-dumper": "^3.4"
+            },
+            "suggest": {
+                "ext-sockets": "To use client-side monitoring"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AlibabaCloud\\Tea\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alibaba Cloud SDK",
+                    "email": "sdk-team@alibabacloud.com",
+                    "homepage": "http://www.alibabacloud.com"
+                }
+            ],
+            "description": "Client of Tea for PHP",
+            "homepage": "https://www.alibabacloud.com/",
+            "keywords": [
+                "alibabacloud",
+                "client",
+                "cloud",
+                "tea"
+            ],
+            "time": "2020-07-28T04:09:18+00:00"
+        },
+        {
+            "name": "alibabacloud/tea-fileform",
+            "version": "0.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alibabacloud-sdk-php/tea-fileform.git",
+                "reference": "f1a51c99c808fc24a31000b3975aa02c212cfe64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alibabacloud-sdk-php/tea-fileform/zipball/f1a51c99c808fc24a31000b3975aa02c212cfe64",
+                "reference": "f1a51c99c808fc24a31000b3975aa02c212cfe64",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "adbario/php-dot-notation": "^2.2",
+                "alibabacloud/tea": "^3.0",
+                "guzzlehttp/guzzle": "^6.5",
+                "php": ">5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35|^5.4.3",
+                "symfony/var-dumper": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AlibabaCloud\\Tea\\FileForm\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Alibaba Cloud SDK",
+                    "email": "sdk-team@alibabacloud.com"
+                }
+            ],
+            "description": "Alibaba Cloud Tea File Library for PHP",
+            "time": "2020-03-25T09:51:10+00:00"
+        },
+        {
+            "name": "alipaysdk/easysdk",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alipay/alipay-easysdk.git",
+                "reference": "a28b655a914bd210750c05890a9b5a35a043d034"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alipay/alipay-easysdk/zipball/a28b655a914bd210750c05890a9b5a35a043d034",
+                "reference": "a28b655a914bd210750c05890a9b5a35a043d034",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "adbario/php-dot-notation": "^2.2",
+                "alibabacloud/tea": "^3.1",
+                "alibabacloud/tea-fileform": "^0.3.2",
+                "danielstjules/stringy": "^3.1",
+                "ext-ctype": "*",
+                "ext-curl": "*",
+                "ext-dom": "*",
+                "ext-fileinfo": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
+                "ext-xmlwriter": "*",
+                "guzzlehttp/guzzle": ">=6.3",
+                "mtdowling/jmespath.php": "^2.4",
+                "php": ">=7.0",
+                "pimple/pimple": "^3.0",
+                "psr/log": "^1.1",
+                "songshenzong/support": "^2.0",
+                "xin/container": "^2.0.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alipay\\EasySDK\\": "php/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "junying.wjy",
+                    "email": "junying.wjy@antfin.com"
+                }
+            ],
+            "description": "支付宝官方 Alipay Easy SDK",
+            "time": "2020-07-07T09:42:28+00:00"
+        },
         {
             "name": "aliyuncs/oss-sdk-php",
             "version": "v2.3.1",
@@ -52,6 +288,68 @@
             "description": "Aliyun OSS SDK for PHP",
             "homepage": "http://www.aliyun.com/product/oss/",
             "time": "2019-11-15T11:05:42+00:00"
+        },
+        {
+            "name": "danielstjules/stringy",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/danielstjules/Stringy.git",
+                "reference": "df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/danielstjules/Stringy/zipball/df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
+                "reference": "df24ab62d2d8213bbbe88cc36fc35a4503b4bd7e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "symfony/polyfill-mbstring": "~1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stringy\\": "src/"
+                },
+                "files": [
+                    "src/Create.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel St. Jules",
+                    "email": "danielst.jules@gmail.com",
+                    "homepage": "http://www.danielstjules.com"
+                }
+            ],
+            "description": "A string manipulation library with multibyte support",
+            "homepage": "https://github.com/danielstjules/Stringy",
+            "keywords": [
+                "UTF",
+                "helpers",
+                "manipulation",
+                "methods",
+                "multibyte",
+                "string",
+                "utf-8",
+                "utility",
+                "utils"
+            ],
+            "time": "2017-06-12T01:10:27+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -409,6 +707,213 @@
                 "trusted proxy"
             ],
             "time": "2017-06-15T17:19:42+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.5.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.6.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.17.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "psr/log": "^1.1"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2020-06-16T21:01:06+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "239400de7a173fe9901b9ac7c06497751f00727a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/239400de7a173fe9901b9ac7c06497751f00727a",
+                "reference": "239400de7a173fe9901b9ac7c06497751f00727a",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
+            },
+            "suggest": {
+                "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "psr-7",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "time": "2019-07-01T23:21:34+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -997,6 +1502,69 @@
             "time": "2019-12-28T04:23:06+00:00"
         },
         {
+            "name": "mtdowling/jmespath.php",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jmespath/jmespath.php.git",
+                "reference": "42dae2cbd13154083ca6d70099692fef8ca84bfb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/42dae2cbd13154083ca6d70099692fef8ca84bfb",
+                "reference": "42dae2cbd13154083ca6d70099692fef8ca84bfb",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^5.4 || ^7.0 || ^8.0",
+                "symfony/polyfill-mbstring": "^1.17"
+            },
+            "require-dev": {
+                "composer/xdebug-handler": "^1.4",
+                "phpunit/phpunit": "^4.8.36 || ^7.5.15"
+            },
+            "bin": [
+                "bin/jp.php"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JmesPath\\": "src/"
+                },
+                "files": [
+                    "src/JmesPath.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Declaratively specify how to extract elements from a JSON document",
+            "keywords": [
+                "json",
+                "jsonpath"
+            ],
+            "time": "2020-07-31T21:01:56+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "1.39.1",
             "source": {
@@ -1173,6 +1741,62 @@
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
+            "name": "pimple/pimple",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "e55d12f9d6a0e7f9c85992b73df1267f46279930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/e55d12f9d6a0e7f9c85992b73df1267f46279930",
+                "reference": "e55d12f9d6a0e7f9c85992b73df1267f46279930",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": "^7.2.5",
+                "psr/container": "^1.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3.4|^4.4|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple, a simple Dependency Injection Container",
+            "homepage": "https://pimple.symfony.com",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2020-03-03T09:12:48+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "1.0.0",
             "source": {
@@ -1226,6 +1850,62 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -1415,6 +2095,52 @@
             "time": "2019-12-06T14:19:43+00:00"
         },
         {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
             "name": "ramsey/uuid",
             "version": "3.9.3",
             "source": {
@@ -1506,6 +2232,77 @@
                 "uuid"
             ],
             "time": "2020-02-21T04:36:14+00:00"
+        },
+        {
+            "name": "songshenzong/support",
+            "version": "2.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/songshenzong/support.git",
+                "reference": "34973c04ffcf226e503f1c3a69d30ac49f7621f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/songshenzong/support/zipball/34973c04ffcf226e503f1c3a69d30ac49f7621f6",
+                "reference": "34973c04ffcf226e503f1c3a69d30ac49f7621f6",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "danielstjules/stringy": "^3.1",
+                "ext-json": "*",
+                "ext-simplexml": "*",
+                "ext-xml": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "laravel/framework": "^5.8",
+                "phpunit/phpunit": "^4.8.35|^5.4.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Songshenzong\\Support\\StringsServiceProvider"
+                    ],
+                    "aliases": {
+                        "Strings": "Songshenzong\\Support\\StringsFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Songshenzong\\Support\\": "src/"
+                },
+                "files": [
+                    "src/StringsHelpers.php",
+                    "src/BashEchoHelpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Songshenzong",
+                    "email": "i@songshenzong.com"
+                }
+            ],
+            "description": "The Songshenzong Support package.",
+            "homepage": "http://songshenzong.com",
+            "keywords": [
+                "laravel",
+                "support",
+                "tools",
+                "web"
+            ],
+            "time": "2019-08-29T01:59:12+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3082,6 +3879,80 @@
                 "environment"
             ],
             "time": "2020-07-14T17:54:18+00:00"
+        },
+        {
+            "name": "xin/container",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://gitee.com/liuxiaojinla/php-container",
+                "reference": "97bb67f87dd851545938a1f2fe0ffbd379e3ff81"
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*",
+                "psr/container": "^1.0",
+                "xin/helper": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xin\\container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "晋",
+                    "email": "657306123@qq.com"
+                }
+            ],
+            "description": "严格基于PSR11规范实现基础的容器和依赖注入",
+            "time": "2019-10-21T03:51:25+00:00"
+        },
+        {
+            "name": "xin/helper",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://gitee.com/liuxiaojinla/php-helper",
+                "reference": "02a58132dae2aea2d1c0b8e66f55125969224747"
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-iconv": "*",
+                "ext-json": "*",
+                "ext-libxml": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "ext-simplexml": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xin\\helper\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "晋",
+                    "email": "1540175452@qq.com"
+                }
+            ],
+            "description": "PHP项目日常开发必备基础库，数组工具类、字符串工具类、数字工具类、函数工具类、服务器工具类、加密工具类",
+            "time": "2019-06-22T08:28:23+00:00"
         }
     ],
     "packages-dev": [

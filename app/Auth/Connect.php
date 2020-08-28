@@ -13,6 +13,10 @@ class Connect extends Model
     public static $_SCOPE = ['wx', 'alipay'];
     public $guarded = ['id'];
 
+    public static function access_token(string $auth_code, string $platform) {
+
+    }
+
     /**
      * 通过第三方平台的oauth_token获取应用token
      * @param string $scope 第三方平台名
@@ -28,11 +32,11 @@ class Connect extends Model
         $create_data = [
             'oauth_key' => env('CONNECT_ALIPAY_APP_ID'),
             'oauth_token' => $auth_data["oauth_token"],
-            'oauth_token_fresh' => $auth_data["oauth_token_fresh"],
-            'oauth_expire' => $auth_data["oauth_expire"],
-            'oauth_token_fresh_expire' => $auth_data["oauth_token_fresh_expire"],
+            'oauth_token_fresh' => $auth_data["oauth_token_fresh"]??"",
+            'oauth_expire' => $auth_data["oauth_expire"]??"",
+            'oauth_token_fresh_expire' => $auth_data["oauth_token_fresh_expire"]??"",
             'created' => now()->getTimestamp(),
-            'oauth_data' => $auth_data["oauth_data"]
+            'oauth_data' => ""
         ];
         if ($scope == "wx") {
             $create_data["oauth_key"] = env("CONNECT_WX_APP_ID");

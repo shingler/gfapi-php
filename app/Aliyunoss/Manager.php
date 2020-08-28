@@ -17,13 +17,15 @@ use Config;
 class Manager
 {
     protected $ossClient = null;
+    private $accessKeyId;
+    private $accessKeySecret;
 
     public function __construct() {
-        $accessKeyId = env("OSS_ACCESS_KEY_ID");
-        $accessKeySecret = env("OSS_ACCESS_KEY_SECRET");
+        $this->accessKeyId = env("OSS_ACCESS_KEY_ID");
+        $this->accessKeySecret = env("OSS_ACCESS_KEY_SECRET");
         $endpoint = env("OSS_END_POINT");
         try {
-            $this->ossClient = new OssClient($accessKeyId, $accessKeySecret, $endpoint);
+            $this->ossClient = new OssClient($this->accessKeyId, $this->accessKeySecret, $endpoint);
         } catch (OssException $ex) {
             printf($ex->getMessage());
         }
@@ -44,10 +46,10 @@ class Manager
 
     /**
      * 根据bucket名获取节点域名
-     * @param $bucket_name bucket数组的key名
-     * @return bucket对应的节点域名
+     * @param string $bucket_name bucket数组的key名
+     * @return string bucket对应的节点域名
      */
-    public function getDomain($bucket_name):string {
+    public function getDomain(string $bucket_name):string {
         if (array_key_exists($bucket_name, Config::get("aliyunoss.OSS_BUCKETNAME"))) {
             return Config::get("aliyunoss.OSS_BUCKETNAME")[$bucket_name]["domain"];
         } else {
@@ -113,10 +115,11 @@ class Manager
      * @param $key 远程文件名
      * @param $bucket_name bucket数组的key名
      * @param $style_name 样式名称
+     * @param $protocal 访问协议。默认为空，自适应
      * @return 缩略图地址
      */
-    public function getUrl($key, $bucket_name, $style_name = ""):string {
-        $origin_url = $this->getOriginUrl($key, $bucket_name);
+    public function getUrl($key, $bucket_name, $style_name = "", $protocal = ""):string {
+        $origin_url = $this->getOriginUrl($key, $bucket_name, $protocal);
         if (in_array($style_name,$this->getStyle($bucket_name))) {
             return sprintf("%s?x-oss-process=style/%s", $origin_url, $style_name);
         } else {
@@ -128,13 +131,67 @@ class Manager
      * 获取原图地址
      * @param $key 远程文件名
      * @param $bucket_name bucket数组的key名
+     * @param $protocal 访问协议。默认为空，自适应
      * @return 图片url
      */
-    public function getOriginUrl($key, $bucket_name):string {
+    public function getOriginUrl($key, $bucket_name, $protocal):string {
         if (strpos($key, "http") !== false) {
             return $key;
         }
-        return sprintf("//%s/%s", $this->getDomain($bucket_name), $key);
+        if (in_array($protocal, ["http", "https"])) {
+            $protocal .= ":";
+        }
+        return sprintf("%s//%s/%s", $protocal, $this->getDomain($bucket_name), $key);
+    }
+
+    /**
+     * 获取直传签名
+     * @param string $bucket_name bucket数组的key
+     * @param string $prefix 上传的目录名
+     * @return array
+     */
+    public function getDirectUploadSign(string $bucket_name, string $prefix=""):array {
+        $dir = $prefix;
+        $id = env("OSS_ACCESS_KEY_ID");
+        $key = env("OSS_ACCESS_KEY_SECRET");
+        $host = $this->getDomain($bucket_name);
+
+        $now = time();
+        $expire = 30;  //设置该policy超时时间是10s. 即这个policy过了这个有效时间，将不能访问。
+        if (env("APP_ENV") == "local") {
+            //docker环境时间差别很大，放大到7天
+            $expire = 86400*7;
+        }
+        $end = $now + $expire;
+        $expiration = self::gmt_iso8601($end);
+
+        $start = array(0=>'starts-with', 1=>'$key', 2=>$dir);
+        $conditions[] = $start;
+
+
+        $arr = array('expiration'=>$expiration,'conditions'=>$conditions);
+        $policy = json_encode($arr);
+        $base64_policy = base64_encode($policy);
+        $string_to_sign = $base64_policy;
+        $signature = base64_encode(hash_hmac('sha1', $string_to_sign, $key, true));
+
+        $response = array();
+        $response['accessid'] = $id;
+        $response['host'] = "https://".$host;
+        $response['policy'] = $base64_policy;
+        $response['signature'] = $signature;
+        $response['expire'] = $end;
+        $response['dir'] = $dir;  // 这个参数是设置用户上传文件时指定的前缀。
+        return $response;
+    }
+
+    public static function gmt_iso8601($time) {
+        $dtStr = date("c", $time);
+        $mydatetime = new \DateTime($dtStr);
+        $expiration = $mydatetime->format(\DateTime::ISO8601);
+        $pos = strpos($expiration, '+');
+        $expiration = substr($expiration, 0, $pos);
+        return $expiration."Z";
     }
 
 }

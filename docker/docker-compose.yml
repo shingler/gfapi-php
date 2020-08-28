@@ -1,29 +1,32 @@
-version: "2"
+version: "2.1"
 services:
   laravel:
 #    image: shingler/php7_laravel_nginx:v2
-    image: laravel_dev:1.7
+    image: laravel_dev:1.9
     restart: always
     depends_on:
       - mysql
     volumes:
       - /Users/shingler/project:/var/www
     container_name: my_laravel_dev
+    tty: true
     ports:
       - 8100:8100
     expose:
       - 8100
     links:
       - "mysql:gf-mysql"
+    cap_add:
+      - ALL
     networks:
       my_dev_workspace:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 172.18.0.2
 
   mysql:
     image: mysql:5.6
     restart: always
     volumes:
-      - /var/lib/mysql
+      - /Users/shingler/database:/var/lib/mysql
     container_name: mysql56
     ports:
       - 3306:3306
@@ -33,7 +36,7 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
     networks:
       my_dev_workspace:
-        ipv4_address: 172.17.0.3
+        ipv4_address: 172.18.0.3
 
   django:
     image: shingler/centos_python3_django:v1.2
@@ -47,9 +50,12 @@ services:
     expose:
       - 8000
     container_name: my_django_nginx
+    cap_add:
+      - SYS_TIME
+    tty: true
     networks:
       my_dev_workspace:
-        ipv4_address: 172.17.0.4
+        ipv4_address: 172.18.0.4
 
 networks:
   my_dev_workspace:
@@ -57,6 +63,6 @@ networks:
     ipam:
       driver: default
       config:
-      - subnet: 172.17.0.0/16
-        gateway: 172.17.0.1
+      - subnet: 172.18.0.0/16
+        gateway: 172.18.0.1
 

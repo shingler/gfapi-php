@@ -2,6 +2,7 @@
 
 namespace App\Auth;
 
+use App\Aliyunoss\Manager;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -94,6 +95,16 @@ class User extends Authenticatable
         }
 
         return $res;
+    }
+
+    /**
+     * 更新头像。格式：avatar/uid?v=timestamp
+     */
+    public function updateAvatar() {
+        $new_key = sprintf("%s/%d?v=%d", "avatar", $this->id, now()->getTimestamp());
+        $ossManager = new Manager();
+        $this->userprofile->avatar = $ossManager->getUrl($new_key, "avatar", "", "https");;
+        $this->userprofile->save();
     }
 
 }

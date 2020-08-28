@@ -13,7 +13,7 @@ trait JsonResponse {
      * @return Json格式的输出
      */
     public function listJson($data) {
-        return json_encode($data, JSON_UNESCAPED_UNICODE);
+        return response()->json($data);
     }
 
     /**
@@ -32,14 +32,14 @@ trait JsonResponse {
             "results"=> $data
         ];
 
-        return json_encode($res, JSON_UNESCAPED_UNICODE);
+        return response()->json($res);
     }
 
     /**
      * 单条数据的返回格式
      */
     public function infoJson($data) {
-        return json_encode($data, JSON_UNESCAPED_UNICODE);
+        return response()->json($data);
     }
 
     public function success($msg, $data=[]) {
@@ -49,7 +49,7 @@ trait JsonResponse {
             "data" => $data
         ];
 
-        return json_encode($res, JSON_UNESCAPED_UNICODE);
+        return response()->json($res);
     }
 
     public function error($msg, $data=[]) {
@@ -59,6 +59,6 @@ trait JsonResponse {
             "data" => $data
         ];
 
-        return json_encode($res, JSON_UNESCAPED_UNICODE);
+        return response()->json($res);
     }
 }
