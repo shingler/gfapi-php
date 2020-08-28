@@ -66,6 +66,10 @@ class ConnectController extends Controller
         }
         // 生成应用token
         $expire = strtotime("+1day");
+        if (env("APP_ENV") == "local") {
+            //docker环境时间差别很大，放大到7天
+            $expire = strtotime("+7day");
+        }
         $app_token = sprintf("%s_%s_%d", $auth_data["platform"], $conn->user_id, $expire);
         $app_token = md5(base64_encode($app_token));
 

@@ -48,4 +48,11 @@ abstract class TestCase extends BaseTestCase
         Userprofile::where("user_id", $user_id)->delete();
         User::destroy($user_id);
     }
+
+    public function randomUser():User {
+        //从uid最小的前10个用户里随机取
+        $list = User::with("userprofile")->where("id", "!=", 1)->orderBy("id")->take(10)->get();
+        return $list[array_rand($list->toArray())];
+
+    }
 }

@@ -115,10 +115,11 @@ class Manager
      * @param $key 远程文件名
      * @param $bucket_name bucket数组的key名
      * @param $style_name 样式名称
+     * @param $protocal 访问协议。默认为空，自适应
      * @return 缩略图地址
      */
-    public function getUrl($key, $bucket_name, $style_name = ""):string {
-        $origin_url = $this->getOriginUrl($key, $bucket_name);
+    public function getUrl($key, $bucket_name, $style_name = "", $protocal = ""):string {
+        $origin_url = $this->getOriginUrl($key, $bucket_name, $protocal);
         if (in_array($style_name,$this->getStyle($bucket_name))) {
             return sprintf("%s?x-oss-process=style/%s", $origin_url, $style_name);
         } else {
@@ -130,13 +131,17 @@ class Manager
      * 获取原图地址
      * @param $key 远程文件名
      * @param $bucket_name bucket数组的key名
+     * @param $protocal 访问协议。默认为空，自适应
      * @return 图片url
      */
-    public function getOriginUrl($key, $bucket_name):string {
+    public function getOriginUrl($key, $bucket_name, $protocal):string {
         if (strpos($key, "http") !== false) {
             return $key;
         }
-        return sprintf("//%s/%s", $this->getDomain($bucket_name), $key);
+        if (in_array($protocal, ["http", "https"])) {
+            $protocal .= ":";
+        }
+        return sprintf("%s//%s/%s", $protocal, $this->getDomain($bucket_name), $key);
     }
 
     /**
@@ -153,6 +158,10 @@ class Manager
 
         $now = time();
         $expire = 30;  //设置该policy超时时间是10s. 即这个policy过了这个有效时间，将不能访问。
+        if (env("APP_ENV") == "local") {
+            //docker环境时间差别很大，放大到7天
+            $expire = 86400*7;
+        }
         $end = $now + $expire;
         $expiration = self::gmt_iso8601($end);
 

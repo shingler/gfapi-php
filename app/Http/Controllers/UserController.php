@@ -57,4 +57,11 @@ class UserController extends Controller
         $sign = $ossManager->getDirectUploadSign("avatar", "avatar");
         return $this->success("ok", $sign);
     }
+
+    public function change_avatar(Request $request) {
+        $user_id = $request->session()->get("user_id");
+        $user = User::find($user_id);
+        $user->updateAvatar();
+        return $this->success("ok", $user->userprofile->avatar);
+    }
 }

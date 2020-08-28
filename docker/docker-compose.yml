@@ -1,8 +1,8 @@
-version: "2"
+version: "2.1"
 services:
   laravel:
 #    image: shingler/php7_laravel_nginx:v2
-    image: laravel_dev:1.8
+    image: laravel_dev:1.9
     restart: always
     depends_on:
       - mysql
@@ -16,6 +16,8 @@ services:
       - 8100
     links:
       - "mysql:gf-mysql"
+    cap_add:
+      - ALL
     networks:
       my_dev_workspace:
         ipv4_address: 172.18.0.2
@@ -48,6 +50,8 @@ services:
     expose:
       - 8000
     container_name: my_django_nginx
+    cap_add:
+      - SYS_TIME
     tty: true
     networks:
       my_dev_workspace:
